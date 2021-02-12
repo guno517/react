@@ -4,7 +4,7 @@ function Hello({color, name, isSpecial}){
     return (<div style={{
         color
     }}>
-        {isSpecial ? <b>*</b> : null}
+        {isSpecial && <b>*</b>}
         Hello {name}</div>);
 }
 
