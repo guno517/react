@@ -1,20 +1,38 @@
 import React, {useState} from 'react';
 
 function InputSample() {
-    const [text, setText] = useState('');
+    const [inputs, setInputs] = useState({
+        name: '',
+        nickname: ''
+    });
+    const {name, nickname} = inputs;
     const onChange = (e) => {
-        setText(e.target.value);
+        const {name, value} = e.target;
+        const nextInputs = {
+            ...inputs,
+            [name]: value
+        }
+
+        setInputs(nextInputs);
+        setInputs({
+            ...inputs,
+            [name]: value
+        }); {/**name은 name 또는 nickname이 될 수 있다. */}
     };
     const onReset = () => {
-        setText('');
+        setInputs({
+            name:'',
+            nickname:''
+        });
     };
     return (
         <div>
-            <input onChange={onChange} value={text}/> {/**value={text}가 중요 / 이 값이 없으면 setText에 값이 전달이 안돼 초기화,출력이 안된다. */}
+            <input name="name" placeholder="이름" onChange={onChange} value={name}/>
+            <input name="nickname" placeholder="닉네임" onChange={onChange} value={nickname}/>
             <button onClick={onReset}>초기화</button>
             <div>
                 <b>값 : </b>
-                    {text}
+                {name} ({nickname})
             </div>
         </div>
     );
