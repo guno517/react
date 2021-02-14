@@ -1,4 +1,4 @@
-import React, {useState, useRef, useMemo} from 'react';
+import React, {useState, useRef, useMemo, useCallback} from 'react';
 import './App.css';
 import Wrapper from './wrapper';
 import Counter from './Counter';
@@ -17,13 +17,13 @@ function App() {
   })
 
   const {username, email} = inputs;
-  const onChange = (e) => {
+  const onChange = useCallback(e => {
     const {name, value} = e.target;
     setInputs({
       ...inputs,
       [name]: value
     });
-  }
+  }, [inputs]);
   const [users,setUsers] = useState([
     {
         id:1,
@@ -46,13 +46,13 @@ function App() {
   ]);
   const nextId = useRef(4);
 
-  const onCreate = () => {
+  const onCreate = useCallback( () => {
     const user = {
       id: nextId.current,
       username,
       email,
     }
-    setUsers([...users, user]) //기존의 배열을 복사하고 새로운 배열을 만들고 user을 넣는다
+    setUsers(users => [...users, user]) //기존의 배열을 복사하고 새로운 배열을 만들고 user을 넣는다
     //setUsers(users.concat(user));
     //user.push(user) 는 업데이트가 되지 않는다. XXXXX
     setInputs({
@@ -61,19 +61,19 @@ function App() {
     });
     console.log(nextId.current); // 4
     nextId.current += 1;
-  }
+  },[username, email]);
 
-  const onRemove = id => {
-    setUsers(users.filter(user => user.id !== id)); //id를 비교한다
-  }
+  const onRemove = useCallback(id => {
+    setUsers(users => users.filter(user => user.id !== id)); //id를 비교한다
+  },[])
 
-  const onToggle = id => {
-    setUsers(users.map(
+  const onToggle = useCallback(id => {
+    setUsers(users => users.map(
       user => user.id ===id //user을 파라미터로 가져온다
         ? {...user, active: !user.active }
         : user
     ));
-  }
+  },[]);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
 

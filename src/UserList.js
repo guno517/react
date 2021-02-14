@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 
-function User({user, onRemove, onToggle}){
+const User = React.memo(function User({user, onRemove, onToggle}){
     const {username, email, id, active} = user; // {user.username}, {user.email}, {user.id}를 <div>내에서 쓰기 귀찮다면
     useEffect(() => {
-        
+
     });
         
     return(
@@ -20,7 +20,7 @@ function User({user, onRemove, onToggle}){
             {/**값을 받아 값에 해당하는 데이터를 지워야하기 때문에 파라미터를 받기 위해 새로운 익명 함수를 호출 */}
         </div>
     );
-}
+});
 
 function UserList({users, onRemove, onToggle}) {
     return (
@@ -41,4 +41,4 @@ function UserList({users, onRemove, onToggle}) {
     );
 }
 
-export default UserList;
+export default React.memo(UserList, (prevProps, nextProps) => nextProps.users === prevProps.users);
