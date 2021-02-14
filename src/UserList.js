@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 function User({user, onRemove, onToggle}){
     const {username, email, id, active} = user; // {user.username}, {user.email}, {user.id}를 <div>내에서 쓰기 귀찮다면
+    useEffect(() => {
+        
+    });
+        
     return(
         <div>
             <b style={{
