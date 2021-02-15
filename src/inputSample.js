@@ -18,12 +18,12 @@ function InputSample() {
         setInputs({
             ...inputs,
             [name]: value
-        }); {/**name은 name 또는 nickname이 될 수 있다. */}
+        }); /**name은 name 또는 nickname이 될 수 있다. */
     };
     const onReset = () => {
         setInputs({
             name:'',
-            nickname:''
+            nickname:'',
         });
         nameInput.current.focus();
     };

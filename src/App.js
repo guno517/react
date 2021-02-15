@@ -1,8 +1,5 @@
 import React, {useState, useRef, useMemo, useCallback} from 'react';
 import './App.css';
-import Wrapper from './wrapper';
-import Counter from './Counter';
-import InputSample from './inputSample';
 import UserList from './UserList'
 import CreateUser from './CreateUser';
 
@@ -79,15 +76,9 @@ function App() {
 
   return (
     <>
-    <Counter />
-    <hr />
-    <InputSample />
-    <hr />
-    <>
       <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate}/>
       <UserList users={users} onRemove={onRemove} onToggle={onToggle}/>
       <div>활성사용자 수 : {count}</div>
-    </>
     </>
   );
 }
