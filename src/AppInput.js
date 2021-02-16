@@ -7,4 +7,4 @@ function AppInput(){
     );
 }
 
-export default Inputexample;
+export default AppInput;
