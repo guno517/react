@@ -31,8 +31,7 @@ function UserList({users, onRemove, onToggle}) {
                     user => (
                     <User 
                         user={user}
-                        key={user.id} 
-                        //key가 없으면 웹의 효율성이 떨어진다. 모든 정보가 다시 업데이트된다(?)
+                        key={user.id} //key가 없으면 웹의 효율성이 떨어진다. 모든 정보가 다시 업데이트된다(?)
                         // 새로운 항목이 추가되거나 삭제될 때, 효율적으로 관리할 수 있다.
                         onRemove={onRemove}
                         onToggle={onToggle}

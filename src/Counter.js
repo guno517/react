@@ -1,15 +1,29 @@
-import React,{useState} from 'react';
+import React,{useReducer} from 'react';
+
+function reducer(state, action){
+    switch(action.type){
+        case 'INCREMENT':
+            return state + 1;
+        case 'DECREMENT':
+            return state - 1;
+        default:
+            throw new Error('Unhandled action');
+    }
+}
 
 function Counter(){
-    const [number, setNumber] = useState(0); /*number라는 상태를 만들건데 기본값은 0이다 / setNumber는 0인 상태를 바꿔주는 함수 
-    const numberState = useState(0)
-    const number = numberState[0]
-    const setNumber = numberState[1] 이 배열 비구조할당을 통해 위의 한줄로 변경*/
+    
+    const [number, dispatch] = useReducer(reducer, 0); //dispatch : 보내다, 액션을 발생시킨다.
+
     const onIncrease = () => {
-        setNumber(prevNumber => prevNumber + 1); /**함수형 업데이트 /최적화 */
+        dispatch({
+            type: 'INCREMENT',
+        })
     }
     const onDecrease = () => {
-        setNumber(number-1)
+        dispatch({
+            type:'DECREMENT',
+        })
     }
     return(
         <div>

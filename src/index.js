@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 //import AppCounter from './AppCounter'
 //import AppInput from './AppInput'
-import AppArray from './AppArray'
+//import AppArray from './AppArray'
+//import Counter from './Counter'
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppArray />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
