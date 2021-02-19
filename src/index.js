@@ -7,11 +7,11 @@ import reportWebVitals from './reportWebVitals';
 //import AppInput from './AppInput'
 //import AppArray from './AppArray'
 //import Counter from './Counter'
-import ContextSample from './ContextSample'
+//import ContextSample from './ContextSample'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContextSample />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
