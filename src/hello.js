@@ -13,16 +13,19 @@ function Hello() {
       id: 1,
       username: 'guno',
       email: 'guno@gmail.com',
+      active: true,
     },
     {
       id: 2,
       username: 'test',
       email: 'test@gmail.com',
+      active: false,
     },
     {
       id: 3,
       username: 'coffee',
       email: 'coffee@gmail.com',
+      active: false,
     },
   ]);
 
@@ -52,6 +55,13 @@ function Hello() {
     setUsers(users.filter((user) => id !== user.id));
     console.log(id);
   };
+  const onToggle = (id) => {
+    setUsers(
+      users.map((user) =>
+        user.id === id ? { ...user, active: !user.active } : user,
+      ),
+    );
+  };
   return (
     <div>
       <div>
@@ -62,7 +72,7 @@ function Hello() {
           onCreate={onCreate}
         />
       </div>
-      <UserList users={users} onRemove={onRemove} />
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
     </div>
   );
 }
